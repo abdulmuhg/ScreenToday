@@ -40,4 +40,5 @@
     <dimen name="spacing_mxxlarge">27dp</dimen>
     <dimen name="size_240">240dp</dimen>
     <dimen name="padding_4">4dp</dimen>
+    <dimen name="size_170">170dp</dimen>
 </resources>

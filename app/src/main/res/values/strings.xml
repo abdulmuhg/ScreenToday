@@ -9,4 +9,8 @@
     <string name="title_error_ok">Ok, I Understand</string>
     <string name="title_tab_movie">Movie</string>
     <string name="title_tab_tv_series">TV Series</string>
+    <string name="title_detail">Detail</string>
+    <string name="title_recomendation">Recomendations</string>
+    <string name="title_information">Information</string>
+    <string name="title_synopsis">Synopsis</string>
 </resources>

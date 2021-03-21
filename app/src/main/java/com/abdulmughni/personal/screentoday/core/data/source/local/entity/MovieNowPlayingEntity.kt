@@ -15,15 +15,16 @@ data class MovieNowPlayingEntity(
     val id: Int? = null,
 
     var posterPath: String? = null,
-    var adult: Boolean = false,
-    var overview: String? = null,
-    var releaseDate: String? = null,
-    var title: String? = null,
-    var genre: String? = null,
-    var originalTitle: String? = null,
-    var originalLanguage: String? = null,
+    var adult: Boolean,
+    var overview: String,
+    var releaseDate: String,
+    var title: String,
+    var genre: String,
+    var originalTitle: String,
+    var originalLanguage: String,
     var backdropPath: String? = null,
-    var popularity: Int? = null,
-    var voteCount: Int? = null,
-    var voteAverage: Int? = null
+    var popularity: Double,
+    var voteCount: Int,
+    var voteAverage: Double,
+    var isFavorite: Boolean = false
 ) : Parcelable
