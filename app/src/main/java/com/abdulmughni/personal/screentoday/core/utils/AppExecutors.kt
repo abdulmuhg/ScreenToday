@@ -15,7 +15,7 @@ class AppExecutors @VisibleForTesting constructor(
 ) {
 
     companion object {
-        private const val THREAD_COUNT = 3
+        private const val THREAD_COUNT = 5
     }
 
     @Inject

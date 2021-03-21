@@ -12,7 +12,7 @@
         android:theme="@style/Theme.ScreenToday">
         <activity android:name=".DetailMovieActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".MainActivity"
+        <activity android:name=".core.ui.main.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.ScreenToday.NoActionBar">
             <intent-filter>

@@ -11,7 +11,7 @@ interface MovieDao {
     @Query("SELECT * FROM movies_popular")
     fun getPopularMovies(): Flow<List<MoviePopularEntity>>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertPopMovie(moviePopular: List<MoviePopularEntity>)
 
     @Update
@@ -20,7 +20,7 @@ interface MovieDao {
     @Query("SELECT * FROM movies_now_playing")
     fun getNowPlayingMovies(): Flow<List<MovieNowPlayingEntity>>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertNowPlayingMovie(movie: List<MovieNowPlayingEntity>)
 
     @Update
@@ -29,7 +29,7 @@ interface MovieDao {
     @Query("SELECT * FROM movies_top_rated")
     fun getTopRatedMovies(): Flow<List<MovieTopRatedEntity>>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertTopRatedMovie(movie: List<MovieTopRatedEntity>)
 
     @Update

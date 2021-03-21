@@ -1,10 +1,11 @@
-package com.abdulmughni.personal.screentoday
+package com.abdulmughni.personal.screentoday.core.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.abdulmughni.personal.screentoday.R
 import com.abdulmughni.personal.screentoday.core.ui.main.TabPagerAdapter
 import com.abdulmughni.personal.screentoday.core.ui.movie.MoviesFragment
 import com.abdulmughni.personal.screentoday.databinding.ActivityMainBinding
@@ -33,8 +34,12 @@ class MainActivity : AppCompatActivity() {
         binding.pager.adapter = adapter
         TabLayoutMediator(binding.tab, binding.pager) { tab, position ->
             when (position) {
-                0 -> { tab.customView = getTabLayout(getString(R.string.title_tab_movie), R.drawable.ic_baseline_home_24) }
-                1 -> { tab.customView = getTabLayout(getString(R.string.title_tab_tv_series), R.drawable.ic_baseline_insert_chart_24) }
+                0 -> { tab.customView = getTabLayout(getString(R.string.title_tab_movie),
+                    R.drawable.ic_baseline_home_24
+                ) }
+                1 -> { tab.customView = getTabLayout(getString(R.string.title_tab_tv_series),
+                    R.drawable.ic_baseline_insert_chart_24
+                ) }
             }
         }.attach()
         binding.pager.setCurrentItem(0, true)

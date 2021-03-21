@@ -126,5 +126,4 @@ class MoviesFragment : Fragment() {
 
         dialog.show()
     }
-
 }
