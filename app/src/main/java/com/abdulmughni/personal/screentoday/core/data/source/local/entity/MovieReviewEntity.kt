@@ -10,7 +10,7 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "movies_review")
 data class MovieReviewEntity(
     @PrimaryKey
-    @ColumnInfo(name = "id") val id: Int,
+    @ColumnInfo(name = "id") val id: String,
 
     var author: String,
     var content: String,

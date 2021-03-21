@@ -36,13 +36,13 @@ class MainActivity : AppCompatActivity() {
         TabLayoutMediator(binding.tab, binding.pager) { tab, position ->
             when (position) {
                 0 -> { tab.customView = getTabLayout(getString(R.string.title_now_playing),
-                    R.drawable.ic_baseline_home_24
+                    R.drawable.bg_rounded_stroke
                 ) }
                 1 -> { tab.customView = getTabLayout(getString(R.string.title_popular),
-                    R.drawable.ic_baseline_insert_chart_24
+                    R.drawable.bg_rounded_stroke
                 ) }
                 2 -> { tab.customView = getTabLayout(getString(R.string.title_top_rated),
-                    R.drawable.ic_baseline_insert_chart_24
+                    R.drawable.bg_rounded_stroke
                 ) }
             }
         }.attach()

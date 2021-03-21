@@ -4,10 +4,7 @@ import android.util.Log
 import com.abdulmughni.personal.screentoday.core.data.source.local.entity.MoviePopularEntity
 import com.abdulmughni.personal.screentoday.core.data.source.remote.network.ApiResponse
 import com.abdulmughni.personal.screentoday.core.data.source.remote.network.ApiService
-import com.abdulmughni.personal.screentoday.core.data.source.remote.response.NowPlayingMoviesResponse
-import com.abdulmughni.personal.screentoday.core.data.source.remote.response.PopularMoviesResponse
-import com.abdulmughni.personal.screentoday.core.data.source.remote.response.ResultsItem
-import com.abdulmughni.personal.screentoday.core.data.source.remote.response.TopRatedMoviesResponse
+import com.abdulmughni.personal.screentoday.core.data.source.remote.response.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -43,6 +40,17 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
         return flow {
             try {
                 val response = apiService.getMovieNowPlaying()
+                emit(ApiResponse.Success(response))
+            } catch (e: Exception){
+                emit(ApiResponse.Error(e.toString()))
+                Log.e("RemoteDataSource", e.toString())
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+    suspend fun getReviews(id: Int): Flow<ApiResponse<ListReviewMoviesResponse>> {
+        return flow {
+            try {
+                val response = apiService.getMovieReviews(movie_id = id)
                 emit(ApiResponse.Success(response))
             } catch (e: Exception){
                 emit(ApiResponse.Error(e.toString()))

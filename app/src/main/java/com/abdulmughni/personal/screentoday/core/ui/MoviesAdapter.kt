@@ -10,7 +10,6 @@ import com.abdulmughni.personal.screentoday.databinding.AdapterMovieBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-
 class MoviesAdapter (private val showDetail: (Movie) -> Unit) : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
 
     private var data = ArrayList<Movie>()

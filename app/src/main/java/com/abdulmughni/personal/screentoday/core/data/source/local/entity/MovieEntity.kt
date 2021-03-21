@@ -13,6 +13,9 @@ data class MovieEntity(
     @ColumnInfo(name = "id")
     val id: Int,
 
+    @ColumnInfo(name = "type")
+    val type: Int,
+
     var posterPath: String? = null,
     var adult: Boolean,
     var overview: String,

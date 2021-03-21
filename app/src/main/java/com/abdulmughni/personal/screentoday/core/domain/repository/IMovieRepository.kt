@@ -10,7 +10,7 @@ interface IMovieRepository {
     fun getTopRatedMovies(): Flow<Responses<List<Movie>>>
     fun getNowPlayingMovies(): Flow<Responses<List<Movie>>>
     fun getMovieDetails(): Flow<Responses<Movie>>
-    fun getListOfReview(): Flow<Responses<List<MovieReview>>>
+    fun getListOfReview(id: Int): Flow<Responses<List<MovieReview>>>
     fun setMovieFavorite(movie: Movie, isFavorite: Boolean)
     fun getMovieFavorite(): Flow<List<Movie>>
 }

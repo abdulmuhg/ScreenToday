@@ -1,12 +1,13 @@
 package com.abdulmughni.personal.screentoday.core.utils
 
 import com.abdulmughni.personal.screentoday.core.data.source.local.entity.MovieEntity
-import com.abdulmughni.personal.screentoday.core.data.source.local.entity.MoviePopularEntity
+import com.abdulmughni.personal.screentoday.core.data.source.local.entity.MovieReviewEntity
+import com.abdulmughni.personal.screentoday.core.data.source.remote.response.ListReviewMoviesResponse
 import com.abdulmughni.personal.screentoday.core.data.source.remote.response.NowPlayingMoviesResponse
 import com.abdulmughni.personal.screentoday.core.data.source.remote.response.PopularMoviesResponse
-import com.abdulmughni.personal.screentoday.core.data.source.remote.response.ResultsItem
 import com.abdulmughni.personal.screentoday.core.data.source.remote.response.TopRatedMoviesResponse
 import com.abdulmughni.personal.screentoday.core.domain.model.Movie
+import com.abdulmughni.personal.screentoday.core.domain.model.MovieReview
 
 object MovieMapper {
 
@@ -15,18 +16,19 @@ object MovieMapper {
         input.results.map {
             val movie = MovieEntity(
                 id = it.id,
-                title = it.title,
-                voteCount = it.voteCount,
-                voteAverage = it.voteAverage,
+                type = 0,
                 posterPath = it.posterPath,
-                popularity = it.popularity,
-                overview = it.overview,
-                originalLanguage = it.originalLanguage,
                 adult = it.adult,
+                overview = it.overview,
                 releaseDate = it.releaseDate,
+                title = it.title,
+                genre = "",
                 originalTitle = it.originalTitle,
+                originalLanguage = it.originalLanguage,
                 backdropPath = it.backdropPath,
-                genre = ""
+                popularity = it.popularity,
+                voteCount = it.voteCount,
+                voteAverage = it.voteAverage
             )
             data.add(movie)
         }
@@ -38,18 +40,19 @@ object MovieMapper {
         input.results.map {
             val movie = MovieEntity(
                 id = it.id,
-                title = it.title,
-                voteCount = it.voteCount,
-                voteAverage = it.voteAverage,
+                type = 1,
                 posterPath = it.posterPath,
-                popularity = it.popularity,
-                overview = it.overview,
-                originalLanguage = it.originalLanguage,
                 adult = it.adult,
+                overview = it.overview,
                 releaseDate = it.releaseDate,
+                title = it.title,
+                genre = "",
                 originalTitle = it.originalTitle,
+                originalLanguage = it.originalLanguage,
                 backdropPath = it.backdropPath,
-                genre = ""
+                popularity = it.popularity,
+                voteCount = it.voteCount,
+                voteAverage = it.voteAverage
             )
             data.add(movie)
         }
@@ -61,18 +64,36 @@ object MovieMapper {
         input.results.map {
             val movie = MovieEntity(
                 id = it.id,
-                title = it.title,
-                voteCount = it.voteCount,
-                voteAverage = it.voteAverage,
+                type = 2,
                 posterPath = it.posterPath,
-                popularity = it.popularity,
-                overview = it.overview,
-                originalLanguage = it.originalLanguage,
                 adult = it.adult,
+                overview = it.overview,
                 releaseDate = it.releaseDate,
+                title = it.title,
+                genre = "",
                 originalTitle = it.originalTitle,
+                originalLanguage = it.originalLanguage,
                 backdropPath = it.backdropPath,
-                genre = ""
+                popularity = it.popularity,
+                voteCount = it.voteCount,
+                voteAverage = it.voteAverage
+            )
+            data.add(movie)
+        }
+        return data
+    }
+
+    fun mapResponsesToEntities(input: ListReviewMoviesResponse): List<MovieReviewEntity>{
+        val data = ArrayList<MovieReviewEntity>()
+        input.results.map {
+            val movie = MovieReviewEntity(
+                id = it.id,
+                url = it.url,
+                content = it.content,
+                author = it.author,
+                authorId = it.id,
+                createdAt = it.createdAt,
+                updateAt = it.updatedAt
             )
             data.add(movie)
         }
@@ -83,35 +104,50 @@ object MovieMapper {
         input.map {
             Movie(
                 id = it.id,
-                genre = it.genre,
-                backdropPath = it.backdropPath,
-                originalTitle = it.originalTitle,
-                releaseDate = it.releaseDate,
-                adult = it.adult,
-                originalLanguage = it.originalLanguage,
-                overview = it.overview,
-                popularity = it.popularity,
+                type = it.type,
                 posterPath = it.posterPath,
-                voteAverage = it.voteAverage,
-                voteCount = it.voteCount,
+                adult = it.adult,
+                overview = it.overview,
+                releaseDate = it.releaseDate,
                 title = it.title,
+                genre = it.genre,
+                originalTitle = it.originalTitle,
+                originalLanguage = it.originalLanguage,
+                backdropPath = it.backdropPath,
+                popularity = it.popularity,
+                voteCount = it.voteCount,
+                voteAverage = it.voteAverage,
                 isFavorite = it.isFavorite
+            )
+        }
+
+    fun mapEntitiesToDomainR(input: List<MovieReviewEntity>): List<MovieReview> =
+        input.map {
+            MovieReview(
+                id = it.id,
+                createdAt = it.createdAt,
+                updateAt = it.updateAt,
+                authorId = it.authorId,
+                author = it.author,
+                content = it.content,
+                url = it.url
             )
         }
 
     fun mapDomainToEntity(it: Movie) = MovieEntity(
         id = it.id,
-        genre = it.genre,
-        backdropPath = it.backdropPath,
-        originalTitle = it.originalTitle,
-        releaseDate = it.releaseDate,
-        adult = it.adult,
-        originalLanguage = it.originalLanguage,
-        overview = it.overview,
-        popularity = it.popularity,
+        type = it.type,
         posterPath = it.posterPath,
-        voteAverage = it.voteAverage,
+        adult = it.adult,
+        overview = it.overview,
+        releaseDate = it.releaseDate,
+        title = it.title,
+        genre = it.genre,
+        originalTitle = it.originalTitle,
+        originalLanguage = it.originalLanguage,
+        backdropPath = it.backdropPath,
+        popularity = it.popularity,
         voteCount = it.voteCount,
-        title = it.title
+        voteAverage = it.voteAverage
     )
 }

@@ -5,10 +5,17 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import com.abdulmughni.personal.screentoday.R
+import com.abdulmughni.personal.screentoday.core.data.Responses
 import com.abdulmughni.personal.screentoday.core.domain.model.Movie
+import com.abdulmughni.personal.screentoday.core.domain.model.MovieReview
+import com.abdulmughni.personal.screentoday.core.ui.MoviesAdapter
+import com.abdulmughni.personal.screentoday.core.ui.ReviewAdapter
 import com.abdulmughni.personal.screentoday.core.ui.favorite.FavoriteListActivity
 import com.abdulmughni.personal.screentoday.core.utils.formatDate
 import com.abdulmughni.personal.screentoday.databinding.ActivityDetailMovieBinding
@@ -28,13 +35,19 @@ class DetailMovieActivity : AppCompatActivity() {
     private val data : Movie? by lazy {
         intent.getParcelableExtra("data")
     }
+    private val reviewAdapter: ReviewAdapter by lazy {
+        ReviewAdapter { item -> detailReview(item) }
+    }
+    private fun detailReview(movie: MovieReview) {
 
+    }
     private var statusFavorite: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setData()
+        setupAdapter()
     }
 
     @SuppressLint("SetTextI18n")
@@ -71,6 +84,18 @@ class DetailMovieActivity : AppCompatActivity() {
                 setFavorite()
             }
         }
+
+        viewModel.getListReview(data?.id!!).observe(this, {
+            when (it) {
+                is Responses.Success -> {
+                    getDataSuccess(it)
+                }
+            }
+        })
+    }
+
+    private fun getDataSuccess(movie: Responses<List<MovieReview>>) {
+        reviewAdapter.setData(movie.data)
     }
 
     private fun checkStatusFavorite(data : Movie?) {
@@ -136,6 +161,16 @@ class DetailMovieActivity : AppCompatActivity() {
         }
 
         dialog.show()
+    }
+
+    private fun setupAdapter() {
+        with(binding) {
+            rvReview.also {
+                it.adapter = reviewAdapter
+                it.layoutManager = GridLayoutManager(this@DetailMovieActivity, 1)
+                it.setHasFixedSize(true)
+            }
+        }
     }
 
 }
