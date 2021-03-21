@@ -14,8 +14,8 @@ class MovieInteractor @Inject constructor(private val movieRepository: IMovieRep
 
     override fun getNowPlayingMovies(): Flow<Responses<List<Movie>>> = movieRepository.getNowPlayingMovies()
 
-    override fun getMovieDetails(): Flow<Responses<Movie>> = movieRepository.getMovieDetails()
+    override fun getMovieDetails(id: Int): Flow<Responses<Movie>> = movieRepository.getMovieDetails()
 
-    override fun getListOfReview(): Flow<Responses<List<MovieReview>>> = movieRepository.getListOfReview()
+    override fun getListOfReview(id: Int): Flow<Responses<List<MovieReview>>> = movieRepository.getListOfReview()
 
 }

@@ -9,6 +9,6 @@ interface MovieUseCase {
     fun getPopularMovies(): Flow<Responses<List<Movie>>>
     fun getTopRatedMovies(): Flow<Responses<List<Movie>>>
     fun getNowPlayingMovies(): Flow<Responses<List<Movie>>>
-    fun getMovieDetails(): Flow<Responses<Movie>>
-    fun getListOfReview(): Flow<Responses<List<MovieReview>>>
+    fun getMovieDetails(id: Int): Flow<Responses<Movie>>
+    fun getListOfReview(id: Int): Flow<Responses<List<MovieReview>>>
 }
