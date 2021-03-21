@@ -1,12 +1,11 @@
 package com.abdulmughni.personal.screentoday.core.ui.favorite
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import com.abdulmughni.personal.screentoday.R
 import com.abdulmughni.personal.screentoday.core.domain.model.Movie
 import com.abdulmughni.personal.screentoday.core.ui.MoviesAdapter
 import com.abdulmughni.personal.screentoday.core.ui.detail.DetailMovieActivity

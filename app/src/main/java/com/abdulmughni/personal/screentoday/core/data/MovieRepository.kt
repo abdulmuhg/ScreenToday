@@ -1,10 +1,12 @@
 package com.abdulmughni.personal.screentoday.core.data
 
 import com.abdulmughni.personal.screentoday.core.data.source.local.LocalDataSource
-import com.abdulmughni.personal.screentoday.core.data.source.local.entity.MovieReviewEntity
 import com.abdulmughni.personal.screentoday.core.data.source.remote.RemoteDataSource
 import com.abdulmughni.personal.screentoday.core.data.source.remote.network.ApiResponse
-import com.abdulmughni.personal.screentoday.core.data.source.remote.response.*
+import com.abdulmughni.personal.screentoday.core.data.source.remote.response.ListReviewMoviesResponse
+import com.abdulmughni.personal.screentoday.core.data.source.remote.response.NowPlayingMoviesResponse
+import com.abdulmughni.personal.screentoday.core.data.source.remote.response.PopularMoviesResponse
+import com.abdulmughni.personal.screentoday.core.data.source.remote.response.TopRatedMoviesResponse
 import com.abdulmughni.personal.screentoday.core.domain.model.Movie
 import com.abdulmughni.personal.screentoday.core.domain.model.MovieReview
 import com.abdulmughni.personal.screentoday.core.domain.repository.IMovieRepository

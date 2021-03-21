@@ -2,19 +2,16 @@ package com.abdulmughni.personal.screentoday.core.ui.detail
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.abdulmughni.personal.screentoday.R
 import com.abdulmughni.personal.screentoday.core.data.Responses
 import com.abdulmughni.personal.screentoday.core.domain.model.Movie
 import com.abdulmughni.personal.screentoday.core.domain.model.MovieReview
-import com.abdulmughni.personal.screentoday.core.ui.MoviesAdapter
 import com.abdulmughni.personal.screentoday.core.ui.ReviewAdapter
 import com.abdulmughni.personal.screentoday.core.ui.favorite.FavoriteListActivity
 import com.abdulmughni.personal.screentoday.core.utils.formatDate

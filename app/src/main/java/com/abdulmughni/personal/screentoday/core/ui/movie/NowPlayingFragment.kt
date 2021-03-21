@@ -16,7 +16,6 @@ import com.abdulmughni.personal.screentoday.core.ui.detail.DetailMovieActivity
 import com.abdulmughni.personal.screentoday.core.ui.favorite.FavoriteListActivity
 import com.abdulmughni.personal.screentoday.core.utils.sheetBehavior
 import com.abdulmughni.personal.screentoday.databinding.BottomSheetBinding
-import com.abdulmughni.personal.screentoday.databinding.FragmentMoviesBinding
 import com.abdulmughni.personal.screentoday.databinding.FragmentNowPlayingBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog

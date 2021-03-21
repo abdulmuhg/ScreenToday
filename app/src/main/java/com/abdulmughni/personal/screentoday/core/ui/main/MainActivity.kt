@@ -1,8 +1,8 @@
 package com.abdulmughni.personal.screentoday.core.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.abdulmughni.personal.screentoday.R
