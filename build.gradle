@@ -28,6 +28,9 @@ buildscript {
     //Dagger Hilt
     ext.hilt_version = '2.28-alpha'
     ext.hilt_jetpack_version = '1.0.0-alpha02'
+    //shimmer
+    ext.shimmerVersion = "0.5.0"
+
     repositories {
         google()
         jcenter()

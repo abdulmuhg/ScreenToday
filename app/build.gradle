@@ -11,7 +11,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        buildConfigField("String", "API_KEY", '"api-key"')
+        buildConfigField("String", "API_KEY", '"949cef643f49903626011ded32720457"')
         applicationId "com.abdulmughni.personal.screentoday"
         minSdkVersion 21
         targetSdkVersion 30
@@ -80,4 +80,6 @@ dependencies {
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_jetpack_version"
     kapt "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
     kaptAndroidTest "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
+    //Shimmer
+    implementation "com.facebook.shimmer:shimmer:$shimmerVersion"
 }
