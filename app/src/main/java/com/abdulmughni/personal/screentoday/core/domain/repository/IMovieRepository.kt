@@ -11,4 +11,6 @@ interface IMovieRepository {
     fun getNowPlayingMovies(): Flow<Responses<List<Movie>>>
     fun getMovieDetails(): Flow<Responses<Movie>>
     fun getListOfReview(): Flow<Responses<List<MovieReview>>>
+    fun setMovieFavorite(movie: Movie, isFavorite: Boolean)
+    fun getMovieFavorite(): Flow<List<Movie>>
 }

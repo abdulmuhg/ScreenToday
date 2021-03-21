@@ -34,11 +34,19 @@ class MovieRepository @Inject constructor(
 
             override suspend fun saveCallResult(data: PopularMoviesResponse) {
                 val movieList = MovieMapper.mapResponsesToEntities(data)
-                localDataSource.insertMoviePop(movieList)
+                localDataSource.insertMovie(movieList)
             }
 
-
         }.asFlow()
+
+    override fun setMovieFavorite(movie: Movie, isFavorite: Boolean) {
+        val movieEntity = MovieMapper.mapDomainToEntity(movie)
+        appExecutors.diskIO().execute {
+            localDataSource.setFavoriteMovie(movieEntity, isFavorite)
+        }
+    }
+
+    override fun getMovieFavorite(): Flow<List<Movie>> = localDataSource.getMovieFavorite().map { MovieMapper.mapEntitiesToDomain(it) }
 
     override fun getTopRatedMovies(): Flow<Responses<List<Movie>>> {
         TODO("Not yet implemented")

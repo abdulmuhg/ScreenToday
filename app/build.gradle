@@ -82,4 +82,6 @@ dependencies {
     kaptAndroidTest "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
     //Shimmer
     implementation "com.facebook.shimmer:shimmer:$shimmerVersion"
+    //lottie
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 }

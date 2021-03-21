@@ -1,5 +1,6 @@
 package com.abdulmughni.personal.screentoday.core.utils
 
+import com.abdulmughni.personal.screentoday.core.data.source.local.entity.MovieEntity
 import com.abdulmughni.personal.screentoday.core.data.source.local.entity.MoviePopularEntity
 import com.abdulmughni.personal.screentoday.core.data.source.remote.response.PopularMoviesResponse
 import com.abdulmughni.personal.screentoday.core.data.source.remote.response.ResultsItem
@@ -7,10 +8,10 @@ import com.abdulmughni.personal.screentoday.core.domain.model.Movie
 
 object MovieMapper {
 
-    fun mapResponsesToEntities(input: PopularMoviesResponse): List<MoviePopularEntity>{
-        val data = ArrayList<MoviePopularEntity>()
+    fun mapResponsesToEntities(input: PopularMoviesResponse): List<MovieEntity>{
+        val data = ArrayList<MovieEntity>()
         input.results.map {
-            val movie = MoviePopularEntity(
+            val movie = MovieEntity(
                 id = it.id,
                 title = it.title,
                 voteCount = it.voteCount,
@@ -30,7 +31,7 @@ object MovieMapper {
         return data
     }
 
-    fun mapEntitiesToDomain(input: List<MoviePopularEntity>): List<Movie> =
+    fun mapEntitiesToDomain(input: List<MovieEntity>): List<Movie> =
         input.map {
             Movie(
                 id = it.id,
@@ -45,7 +46,24 @@ object MovieMapper {
                 posterPath = it.posterPath,
                 voteAverage = it.voteAverage,
                 voteCount = it.voteCount,
-                title = it.title
+                title = it.title,
+                isFavorite = it.isFavorite
             )
         }
+
+    fun mapDomainToEntity(it: Movie) = MovieEntity(
+        id = it.id,
+        genre = it.genre,
+        backdropPath = it.backdropPath,
+        originalTitle = it.originalTitle,
+        releaseDate = it.releaseDate,
+        adult = it.adult,
+        originalLanguage = it.originalLanguage,
+        overview = it.overview,
+        popularity = it.popularity,
+        posterPath = it.posterPath,
+        voteAverage = it.voteAverage,
+        voteCount = it.voteCount,
+        title = it.title
+    )
 }

@@ -11,4 +11,6 @@ interface MovieUseCase {
     fun getNowPlayingMovies(): Flow<Responses<List<Movie>>>
     fun getMovieDetails(id: Int): Flow<Responses<Movie>>
     fun getListOfReview(id: Int): Flow<Responses<List<MovieReview>>>
+    fun setMovieFavorite(movie: Movie, isFavorite: Boolean)
+    fun getMovieFavorite(): Flow<List<Movie>>
 }

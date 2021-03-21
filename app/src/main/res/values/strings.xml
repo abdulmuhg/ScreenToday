@@ -13,4 +13,9 @@
     <string name="title_recomendation">Recomendations</string>
     <string name="title_information">Information</string>
     <string name="title_synopsis">Synopsis</string>
+    <string name="adult_sign">18+</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_success">Success</string>
+    <string name="title_success_content">Success Added to Favorite</string>
+    <string name="title_success_ok">View Favorite List</string>
 </resources>

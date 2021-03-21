@@ -171,26 +171,6 @@
                     tools:ignore="RtlSymmetry" />
 
                 <TextView
-                    android:id="@+id/tvChapter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_8"
-                    android:layout_marginTop="@dimen/margin_16"
-                    android:background="@drawable/bg_rounded_stroke"
-                    android:drawablePadding="@dimen/padding_4"
-                    android:gravity="center_vertical"
-                    android:paddingStart="@dimen/padding_16"
-                    android:paddingTop="@dimen/padding_8"
-                    android:paddingEnd="@dimen/padding_16"
-                    android:paddingBottom="@dimen/padding_8"
-                    tools:text="30 Chapter"
-                    android:textColor="@color/colorText"
-                    app:drawableStartCompat="@drawable/ic_baseline_timer_24"
-                    app:layout_constraintStart_toEndOf="@+id/tvSerialize"
-                    app:layout_constraintTop_toBottomOf="@+id/textView"
-                    tools:ignore="RtlSymmetry" />
-
-                <TextView
                     android:id="@+id/tvUserCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -210,7 +190,7 @@
                     tools:ignore="RtlSymmetry" />
 
                 <TextView
-                    android:id="@+id/tvStatusMovie"
+                    android:id="@+id/tvVoteAvg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_8"
@@ -230,7 +210,7 @@
                     tools:ignore="RtlSymmetry" />
 
                 <TextView
-                    android:id="@+id/tvVolume"
+                    android:id="@+id/tvAdult"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_8"
@@ -241,31 +221,10 @@
                     android:paddingTop="@dimen/padding_8"
                     android:paddingEnd="@dimen/padding_16"
                     android:paddingBottom="@dimen/padding_8"
-                    tools:text="90 Volume"
+                    android:text="@string/adult_sign"
                     android:textColor="@color/colorText"
                     app:drawableStartCompat="@drawable/ic_baseline_find_in_page_24"
                     app:layout_constraintStart_toStartOf="@+id/tvUserCount"
-                    app:layout_constraintTop_toBottomOf="@+id/tvUserCount"
-                    app:layout_goneMarginStart="@dimen/margin_8"
-                    tools:ignore="RtlSymmetry" />
-
-                <TextView
-                    android:id="@+id/tvRank"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_8"
-                    android:layout_marginTop="@dimen/margin_8"
-                    android:background="@drawable/bg_rounded_stroke"
-                    android:drawablePadding="@dimen/padding_4"
-                    android:gravity="center_vertical"
-                    android:paddingStart="@dimen/padding_16"
-                    android:paddingTop="@dimen/padding_8"
-                    android:paddingEnd="@dimen/padding_16"
-                    android:paddingBottom="@dimen/padding_8"
-                    tools:text="20 Popularity Rank"
-                    android:textColor="@color/colorText"
-                    app:drawableStartCompat="@drawable/ic_outline_stars_24"
-                    app:layout_constraintStart_toEndOf="@+id/tvVolume"
                     app:layout_constraintTop_toBottomOf="@+id/tvUserCount"
                     app:layout_goneMarginStart="@dimen/margin_8"
                     tools:ignore="RtlSymmetry" />
@@ -277,7 +236,7 @@
                     android:layout_marginTop="@dimen/margin_24"
                     android:background="@color/colorPrimary"
                     app:layout_constraintStart_toStartOf="@+id/tvSerialize"
-                    app:layout_constraintTop_toBottomOf="@+id/tvVolume" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvAdult" />
 
                 <TextView
                     android:id="@+id/tvLabelSynopsis"

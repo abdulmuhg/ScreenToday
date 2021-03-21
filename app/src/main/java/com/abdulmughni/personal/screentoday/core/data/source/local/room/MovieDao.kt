@@ -1,37 +1,38 @@
 package com.abdulmughni.personal.screentoday.core.data.source.local.room
 
 import androidx.room.*
-import com.abdulmughni.personal.screentoday.core.data.source.local.entity.MoviePopularEntity
-import com.abdulmughni.personal.screentoday.core.data.source.local.entity.MovieNowPlayingEntity
-import com.abdulmughni.personal.screentoday.core.data.source.local.entity.MovieTopRatedEntity
+import com.abdulmughni.personal.screentoday.core.data.source.local.entity.MovieEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MovieDao {
-    @Query("SELECT * FROM movies_popular")
-    fun getPopularMovies(): Flow<List<MoviePopularEntity>>
+    @Query("SELECT * FROM movies")
+    fun getPopularMovies(): Flow<List<MovieEntity>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertPopMovie(moviePopular: List<MoviePopularEntity>)
+    suspend fun insertMovie(moviePopular: List<MovieEntity>)
 
     @Update
-    fun updatePopMovie(moviePopular: MoviePopularEntity)
+    fun updateMovie(moviePopular: MovieEntity)
 
-    @Query("SELECT * FROM movies_now_playing")
-    fun getNowPlayingMovies(): Flow<List<MovieNowPlayingEntity>>
+    @Query("SELECT * FROM movies where isFavorite = 1")
+    fun getFavoriteMovie(): Flow<List<MovieEntity>>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertNowPlayingMovie(movie: List<MovieNowPlayingEntity>)
-
-    @Update
-    fun updateNowPlayingMovie(movie: MovieNowPlayingEntity)
-
-    @Query("SELECT * FROM movies_top_rated")
-    fun getTopRatedMovies(): Flow<List<MovieTopRatedEntity>>
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertTopRatedMovie(movie: List<MovieTopRatedEntity>)
-
-    @Update
-    fun updateTopRatedMovie(movie: MovieTopRatedEntity)
+//    @Query("SELECT * FROM movies_now_playing")
+//    fun getNowPlayingMovies(): Flow<List<MovieNowPlayingEntity>>
+//
+//    @Insert(onConflict = OnConflictStrategy.IGNORE)
+//    suspend fun insertNowPlayingMovie(movie: List<MovieNowPlayingEntity>)
+//
+//    @Update
+//    fun updateNowPlayingMovie(movie: MovieNowPlayingEntity)
+//
+//    @Query("SELECT * FROM movies_top_rated")
+//    fun getTopRatedMovies(): Flow<List<MovieTopRatedEntity>>
+//
+//    @Insert(onConflict = OnConflictStrategy.IGNORE)
+//    suspend fun insertTopRatedMovie(movie: List<MovieTopRatedEntity>)
+//
+//    @Update
+//    fun updateTopRatedMovie(movie: MovieTopRatedEntity)
 }

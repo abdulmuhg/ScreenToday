@@ -1,22 +1,29 @@
-package com.abdulmughni.personal.screentoday.core.domain.model
+package com.abdulmughni.personal.screentoday.core.data.source.local.entity
 
 import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Movie(
+@Entity(tableName = "movies")
+data class MovieEntity(
+    @PrimaryKey
+    @ColumnInfo(name = "id")
     val id: Int,
+
     var posterPath: String? = null,
-    var adult: Boolean = false,
+    var adult: Boolean,
     var overview: String,
     var releaseDate: String,
     var title: String,
     var genre: String,
     var originalTitle: String,
     var originalLanguage: String,
-    var backdropPath: String?= null,
+    var backdropPath: String? = null,
     var popularity: Double,
     var voteCount: Int,
     var voteAverage: Double,
-    var isFavorite: Boolean
+    var isFavorite: Boolean = false
 ) : Parcelable

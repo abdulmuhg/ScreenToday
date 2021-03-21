@@ -10,9 +10,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ScreenToday">
-        <activity android:name=".DetailMovieActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".core.ui.main.MainActivity"
+        <activity android:name=".core.ui.favorite.FavoriteListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ScreenToday.NoActionBar"/>
+        <activity
+            android:name=".core.ui.detail.DetailMovieActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ScreenToday.NoActionBar" />
+        <activity
+            android:name=".core.ui.main.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.ScreenToday.NoActionBar">
             <intent-filter>

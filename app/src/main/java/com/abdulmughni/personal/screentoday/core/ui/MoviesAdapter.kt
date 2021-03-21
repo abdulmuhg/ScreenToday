@@ -1,4 +1,4 @@
-package com.abdulmughni.personal.screentoday.adapter
+package com.abdulmughni.personal.screentoday.core.ui
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

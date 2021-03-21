@@ -2,25 +2,24 @@ package com.abdulmughni.personal.screentoday.core.ui.movie
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import com.abdulmughni.personal.screentoday.DetailMovieActivity
-import com.abdulmughni.personal.screentoday.R
-import com.abdulmughni.personal.screentoday.adapter.MoviesAdapter
 import com.abdulmughni.personal.screentoday.core.data.Responses
 import com.abdulmughni.personal.screentoday.core.domain.model.Movie
+import com.abdulmughni.personal.screentoday.core.ui.MoviesAdapter
+import com.abdulmughni.personal.screentoday.core.ui.detail.DetailMovieActivity
+import com.abdulmughni.personal.screentoday.core.ui.favorite.FavoriteListActivity
 import com.abdulmughni.personal.screentoday.core.utils.sheetBehavior
 import com.abdulmughni.personal.screentoday.databinding.BottomSheetBinding
 import com.abdulmughni.personal.screentoday.databinding.FragmentMoviesBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.qualifiers.ApplicationContext
 
 @AndroidEntryPoint
 class MoviesFragment : Fragment() {
@@ -30,8 +29,8 @@ class MoviesFragment : Fragment() {
     private val binding: FragmentMoviesBinding by lazy {
         FragmentMoviesBinding.inflate(layoutInflater)
     }
-    private val moviesAdapter : MoviesAdapter by lazy {
-        MoviesAdapter { item -> detailMovie(item)}
+    private val moviesAdapter: MoviesAdapter by lazy {
+        MoviesAdapter { item -> detailMovie(item) }
     }
 
     override fun onCreateView(
@@ -41,7 +40,7 @@ class MoviesFragment : Fragment() {
     }
 
     private fun isLoading(isLoading: Boolean) {
-        if(isLoading) {
+        if (isLoading) {
             binding.pgMovie.visibility = View.VISIBLE
             binding.rvMovie.visibility = View.INVISIBLE
         } else {
@@ -57,7 +56,7 @@ class MoviesFragment : Fragment() {
         setupAdapter()
     }
 
-    private fun detailMovie(movie: Movie){
+    private fun detailMovie(movie: Movie) {
         startActivity(Intent(requireContext(), DetailMovieActivity::class.java).also {
             it.putExtra("data", movie)
         })
@@ -85,12 +84,9 @@ class MoviesFragment : Fragment() {
             imgFavorite.also {
                 imgFavorite.setOnClickListener {
                     try {
-//                        startActivity(
-//                            Intent(
-//                                requireContext(),
-//                                Class.forName("web.id.wahyou.favorite.movie.movieFavoriteActivity")
-//                            )
-//                        )
+                        startActivity(
+                            Intent(activity, FavoriteListActivity::class.java)
+                        )
                     } catch (e: Exception) {
                         e.printStackTrace()
                         Toast.makeText(
@@ -109,7 +105,7 @@ class MoviesFragment : Fragment() {
         isLoading(false)
     }
 
-    private fun setupBottomsheet(){
+    private fun setupBottomsheet() {
         behavior = binding.bottomSheet.sheetBehavior()
         behavior.state = BottomSheetBehavior.STATE_EXPANDED
     }
