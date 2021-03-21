@@ -14,8 +14,8 @@ data class Movie(
     var genre: String,
     var originalTitle: String,
     var originalLanguage: String,
-    var backdropPath: String,
-    var popularity: Int,
+    var backdropPath: String?= null,
+    var popularity: Double,
     var voteCount: Int,
-    var voteAverage: Int
+    var voteAverage: Double
 ) : Parcelable
