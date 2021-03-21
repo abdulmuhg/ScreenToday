@@ -16,4 +16,7 @@
     <string name="title_success">Success</string>
     <string name="title_success_content">Success Added to Favorite</string>
     <string name="title_success_ok">View Favorite List</string>
+    <string name="title_now_playing">Now Playing</string>
+    <string name="title_popular">Popular</string>
+    <string name="title_top_rated">Top Rated</string>
 </resources>

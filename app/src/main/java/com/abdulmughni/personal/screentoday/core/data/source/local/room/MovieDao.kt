@@ -7,10 +7,10 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface MovieDao {
     @Query("SELECT * FROM movies")
-    fun getPopularMovies(): Flow<List<MovieEntity>>
+    fun getMovies(): Flow<List<MovieEntity>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertMovie(moviePopular: List<MovieEntity>)
+    suspend fun insertMovie(movie: List<MovieEntity>)
 
     @Update
     fun updateMovie(moviePopular: MovieEntity)

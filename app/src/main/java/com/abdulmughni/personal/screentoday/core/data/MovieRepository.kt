@@ -3,7 +3,9 @@ package com.abdulmughni.personal.screentoday.core.data
 import com.abdulmughni.personal.screentoday.core.data.source.local.LocalDataSource
 import com.abdulmughni.personal.screentoday.core.data.source.remote.RemoteDataSource
 import com.abdulmughni.personal.screentoday.core.data.source.remote.network.ApiResponse
+import com.abdulmughni.personal.screentoday.core.data.source.remote.response.NowPlayingMoviesResponse
 import com.abdulmughni.personal.screentoday.core.data.source.remote.response.PopularMoviesResponse
+import com.abdulmughni.personal.screentoday.core.data.source.remote.response.TopRatedMoviesResponse
 import com.abdulmughni.personal.screentoday.core.domain.model.Movie
 import com.abdulmughni.personal.screentoday.core.domain.model.MovieReview
 import com.abdulmughni.personal.screentoday.core.domain.repository.IMovieRepository
@@ -48,13 +50,44 @@ class MovieRepository @Inject constructor(
 
     override fun getMovieFavorite(): Flow<List<Movie>> = localDataSource.getMovieFavorite().map { MovieMapper.mapEntitiesToDomain(it) }
 
-    override fun getTopRatedMovies(): Flow<Responses<List<Movie>>> {
-        TODO("Not yet implemented")
-    }
+    override fun getTopRatedMovies(): Flow<Responses<List<Movie>>> =
+        object : NetworkBoundResource<List<Movie>, TopRatedMoviesResponse>(appExecutors) {
+            override fun loadFromDB(): Flow<List<Movie>> =
+                localDataSource.getMoviePopular().map {
+                    MovieMapper.mapEntitiesToDomain(it)
+                }
 
-    override fun getNowPlayingMovies(): Flow<Responses<List<Movie>>> {
-        TODO("Not yet implemented")
-    }
+            override fun shouldFetch(data: List<Movie>?): Boolean = true
+
+            override suspend fun createCall(): Flow<ApiResponse<TopRatedMoviesResponse>> =
+               remoteDataSource.getMovieTopRated()
+
+
+            override suspend fun saveCallResult(data: TopRatedMoviesResponse) {
+                val movieList = MovieMapper.mapResponsesToEntities(data)
+                localDataSource.insertMovie(movieList)
+            }
+        }.asFlow()
+
+    override fun getNowPlayingMovies(): Flow<Responses<List<Movie>>> =
+        object : NetworkBoundResource<List<Movie>, NowPlayingMoviesResponse>(appExecutors) {
+            override fun loadFromDB(): Flow<List<Movie>> =
+                localDataSource.getMoviePopular().map {
+                    MovieMapper.mapEntitiesToDomain(it)
+                }
+
+            override fun shouldFetch(data: List<Movie>?): Boolean = true
+
+            override suspend fun createCall(): Flow<ApiResponse<NowPlayingMoviesResponse>> =
+                remoteDataSource.getMovieNowPlaying()
+
+            override suspend fun saveCallResult(data: NowPlayingMoviesResponse) {
+                val movieList = MovieMapper.mapResponsesToEntities(data)
+                localDataSource.insertMovie(movieList)
+            }
+
+
+        }.asFlow()
 
     override fun getMovieDetails(): Flow<Responses<Movie>> {
         TODO("Not yet implemented")

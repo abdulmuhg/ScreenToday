@@ -27,7 +27,7 @@ class MoviesAdapter (private val showDetail: (Movie) -> Unit) : RecyclerView.Ada
         with(holder.view) {
             tvType.text = "Movie"
             tvTitle.text = data[position].title
-            tvRating.text = data[position].popularity.toString()
+            tvRating.text = data[position].voteAverage.toString()
             tvTotalEpisode.text = data[position].releaseDate
             Glide.with(holder.itemView.context)
                 .load("https://image.tmdb.org/t/p/w200/" + data[position].posterPath)

@@ -6,8 +6,9 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.abdulmughni.personal.screentoday.R
-import com.abdulmughni.personal.screentoday.core.ui.main.TabPagerAdapter
-import com.abdulmughni.personal.screentoday.core.ui.movie.MoviesFragment
+import com.abdulmughni.personal.screentoday.core.ui.movie.NowPlayingFragment
+import com.abdulmughni.personal.screentoday.core.ui.movie.PopularFragment
+import com.abdulmughni.personal.screentoday.core.ui.movie.TopRatedFragment
 import com.abdulmughni.personal.screentoday.databinding.ActivityMainBinding
 import com.abdulmughni.personal.screentoday.databinding.TabLayoutBinding
 import com.google.android.material.tabs.TabLayoutMediator
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val adapter : TabPagerAdapter by lazy {
-        TabPagerAdapter(this, arrayListOf(MoviesFragment(), MoviesFragment()))
+        TabPagerAdapter(this, arrayListOf(NowPlayingFragment(), PopularFragment(), TopRatedFragment()))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,10 +35,13 @@ class MainActivity : AppCompatActivity() {
         binding.pager.adapter = adapter
         TabLayoutMediator(binding.tab, binding.pager) { tab, position ->
             when (position) {
-                0 -> { tab.customView = getTabLayout(getString(R.string.title_tab_movie),
+                0 -> { tab.customView = getTabLayout(getString(R.string.title_now_playing),
                     R.drawable.ic_baseline_home_24
                 ) }
-                1 -> { tab.customView = getTabLayout(getString(R.string.title_tab_tv_series),
+                1 -> { tab.customView = getTabLayout(getString(R.string.title_popular),
+                    R.drawable.ic_baseline_insert_chart_24
+                ) }
+                2 -> { tab.customView = getTabLayout(getString(R.string.title_top_rated),
                     R.drawable.ic_baseline_insert_chart_24
                 ) }
             }

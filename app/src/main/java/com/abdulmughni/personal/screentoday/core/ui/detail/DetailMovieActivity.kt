@@ -46,7 +46,7 @@ class DetailMovieActivity : AppCompatActivity() {
                 tvTitleToolbar.text = data?.title
                 tvTitle.text = data?.originalTitle
                 tvRelease.text = if(data?.releaseDate != "") formatDate(data?.releaseDate) else "-"
-                tvType.text = "MOVIE"
+                tvType.text = "Movie"
                 tvRating.text = data?.popularity.toString()
                 tvSerialize.text = data?.originalLanguage
                 tvUserCount.text = data?.voteCount.toString() + " Users Vote"

@@ -22,7 +22,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MoviesFragment : Fragment() {
+class PopularFragment : Fragment() {
     private lateinit var behavior: BottomSheetBehavior<*>
     private val viewModel: MoviesViewModel by viewModels()
 

@@ -94,11 +94,12 @@
                     android:layout_marginTop="@dimen/margin_8"
                     android:drawablePadding="@dimen/padding_8"
                     android:gravity="center_vertical"
-                    tools:text="10 Feb 2020"
+                    app:drawableStartCompat="@drawable/ic_baseline_date_range_24"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/viewCover"
                     app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-                    app:drawableStartCompat="@drawable/ic_baseline_date_range_24" />
+                    tools:text="10 Feb 2020" />
 
                 <TextView
                     android:id="@+id/tvType"
